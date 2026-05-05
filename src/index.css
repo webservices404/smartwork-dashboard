@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter Tight', system-ui, sans-serif;
+  background: #F5F0E6;
+  color: #1B1138;
+  font-feature-settings: 'ss01', 'cv11';
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.18);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 58, 237, 0.32);
+}
+
+/* Selection */
+::selection {
+  background: #BCA4FF;
+  color: #120A24;
+}
+
+/* Layered cream background with grain */
+.bg-canvas {
+  background-color: #F5F0E6;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 90% 0%, rgba(124, 58, 237, 0.08), transparent 60%),
+    radial-gradient(ellipse 60% 60% at 0% 100%, rgba(245, 130, 32, 0.06), transparent 50%);
+}
+
+.bg-canvas::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* Editorial display heading */
+.editorial {
+  font-family: 'Fraunces', Georgia, serif;
+  font-optical-sizing: auto;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+}
+
+/* Card surfaces */
+.surface {
+  background: #FFFEFB;
+  border: 1px solid rgba(124, 58, 237, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 1px 0 0 rgba(15,5,40,0.04), 0 8px 24px -8px rgba(76,29,149,0.10);
+}
+
+.surface-ink {
+  background: linear-gradient(165deg, #1B1138 0%, #120A24 100%);
+  color: #F5F0E6;
+  border-radius: 20px;
+}
+
+/* Tabular numerals for data */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+}
+
+/* Subtle dotted underline link style */
+.link-dot {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(124, 58, 237, 0.4);
+}
+
+/* Grain overlay you can apply to specific surfaces */
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  opacity: 0.7;
+}
+
+/* Marquee */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Number ticker */
+.ticker {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
